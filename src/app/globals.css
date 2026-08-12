@@ -1,0 +1,238 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ------------------------------------------------------------------
+   COVE DESIGN TOKENS
+   Rebrand the whole template by editing the two blocks below.
+   Everything else (components, pages, artwork) reads from these.
+   ------------------------------------------------------------------ */
+
+:root {
+  color-scheme: light;
+
+  /* Surfaces */
+  --bg: #f6f2ea;
+  --bg-soft: #eee7db;
+  --surface: #fdfbf6;
+
+  /* Type */
+  --ink: #262320;
+  --ink-soft: #58534a;
+  --ink-faint: #8a8375;
+
+  /* Structure */
+  --line: #ded4c3;
+  --line-strong: #c8bda8;
+
+  /* Accents */
+  --accent: #5f6d4e;
+  --accent-soft: #97a382;
+  --clay: #a9714d;
+
+  /* Artwork palette — sage */
+  --art-sage-bg: #e3e7d8;
+  --art-sage-1: #b6c0a1;
+  --art-sage-2: #8d9a76;
+  --art-sage-3: #5e6b4c;
+
+  /* Artwork palette — clay */
+  --art-clay-bg: #f0e2d5;
+  --art-clay-1: #dcbb9f;
+  --art-clay-2: #c1906c;
+  --art-clay-3: #8f5f3f;
+
+  /* Artwork palette — sand */
+  --art-sand-bg: #f1e9da;
+  --art-sand-1: #ded0b4;
+  --art-sand-2: #c3b28d;
+  --art-sand-3: #8f8158;
+
+  /* Artwork palette — olive */
+  --art-olive-bg: #e0e0cd;
+  --art-olive-1: #b4b795;
+  --art-olive-2: #868b63;
+  --art-olive-3: #4f5636;
+
+  /* Artwork palette — stone */
+  --art-stone-bg: #e7e5df;
+  --art-stone-1: #cbc7bd;
+  --art-stone-2: #a7a294;
+  --art-stone-3: #6f6a5d;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* A separate palette — deep moss and brown-black, not an inversion. */
+  --bg: #15180f;
+  --bg-soft: #1c2015;
+  --surface: #22261a;
+
+  --ink: #ece6d6;
+  --ink-soft: #b2ac98;
+  --ink-faint: #837d6b;
+
+  --line: #333827;
+  --line-strong: #4a5138;
+
+  --accent: #a9b78d;
+  --accent-soft: #74815c;
+  --clay: #cd9770;
+
+  --art-sage-bg: #1b2015;
+  --art-sage-1: #3a4530;
+  --art-sage-2: #4c5839;
+  --art-sage-3: #7d8d61;
+
+  --art-clay-bg: #221a14;
+  --art-clay-1: #452f21;
+  --art-clay-2: #6b4a33;
+  --art-clay-3: #b98357;
+
+  --art-sand-bg: #201d14;
+  --art-sand-1: #3f3828;
+  --art-sand-2: #5b5138;
+  --art-sand-3: #a4936a;
+
+  --art-olive-bg: #191c11;
+  --art-olive-1: #353d24;
+  --art-olive-2: #4a5330;
+  --art-olive-3: #8b9a63;
+
+  --art-stone-bg: #1c1d1a;
+  --art-stone-1: #383a30;
+  --art-stone-2: #4d4f45;
+  --art-stone-3: #8d8f81;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-soft: var(--bg-soft);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-clay: var(--clay);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-serif: var(--font-fraunces), ui-serif, "Iowan Old Style", Georgia,
+    "Times New Roman", serif;
+}
+
+/* ------------------------------------------------------------------
+   BASE
+   ------------------------------------------------------------------ */
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* Editorial headline defaults */
+.serif {
+  font-family: var(--font-fraunces), ui-serif, "Iowan Old Style", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+/* Small uppercase editorial label used across sections */
+.eyebrow {
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+
+/* Page gutter */
+.wrap {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    padding-inline: 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .wrap {
+    padding-inline: 3.5rem;
+  }
+}
+
+/* Subtle paper grain — natural texture without imagery */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: radial-gradient(
+    var(--line-strong) 0.5px,
+    transparent 0.5px
+  );
+  background-size: 7px 7px;
+  mix-blend-mode: multiply;
+}
+
+[data-theme="dark"] .grain::before {
+  mix-blend-mode: screen;
+  opacity: 0.35;
+}
+
+/* Underline that grows on hover — the template's only signature motion */
+.link-quiet {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.link-quiet:hover,
+.link-quiet:focus-visible {
+  background-size: 100% 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
